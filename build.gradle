@@ -8,7 +8,13 @@
  */
 
 // Apply the java plugin to add support for Java
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -27,4 +33,11 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'tk.hongkailiu.test.App'
+    }
 }
